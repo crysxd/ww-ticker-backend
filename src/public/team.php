@@ -17,8 +17,9 @@ class Team {
 
 		// Fetch all players
 		foreach($nodes as $node) {
-			$url = $this->baseUrl.$node->getAttribute("href");
-			$this->players[] = $this->fetchPlayer($url);
+			$url = $this->baseUrl.$nodes->getAttribute("href");
+			$player = $this->fetchPlayer($url);
+			$this->players[$player["number"]] = $player["info"];
 
 		}
 	}
@@ -41,7 +42,7 @@ class Team {
 		$name = str_replace($number." ", "", $nameAndNumber);
 
 		// Create array and return
-		return array("number" => $number, "name" => $name, "imgUrl" => $imgUrl);
+		return array("number" => $number, "info" => array("name" => $name, "imgUrl" => $imgUrl));
 
 	}
 }
