@@ -17,7 +17,7 @@ class Team {
 
 		// Fetch all players
 		foreach($nodes as $node) {
-			$url = $this->baseUrl.$nodes->getAttribute("href");
+			$url = $this->baseUrl.$node->getAttribute("href");
 			$player = $this->fetchPlayer($url);
 			$this->players[$player["number"]] = $player["info"];
 
